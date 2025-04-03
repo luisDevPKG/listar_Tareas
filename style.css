@@ -1,7 +1,6 @@
 /* aplicar un modelo de diseño de caja natural a todos los elementos, pero permitiendo que los componentes cambien */
 html {
     box-sizing: border-box;
-    height: 100%;
     margin: 0;
     padding: 0;
   }
@@ -11,8 +10,8 @@ html {
 
 .general_content {
     font-family: "Itim", cursive;
-    border: .2rem solid black;
-    border-radius: 2rem;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.75);
+    border-radius: .5rem;
     max-width: 50%;
     margin: 5rem auto;
 }
@@ -59,6 +58,50 @@ html {
     border: 1.7px solid deepskyblue;
 }
 
+
+.general_content .filtertasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.general_content .filtertasks .tasks__button {
+    margin-right: 1rem;
+}
+
+.general_content .filtertasks .tasks__button .donetasks__button--fil {
+    background-color: green;
+    border: 1.5px solid green;
+    border-radius: .5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+}
+
+.general_content .filtertasks .tasks__button .donetasks__button--fil:hover {
+    background-color: #28d520;
+    border: 1.7px solid #28d520;
+}
+
+.general_content .filtertasks .tasks__button .pendingtasks__button--fil {
+    background-color: #ddbd1e;
+    border: 1.5px solid #ddbd1e;
+    border-radius: .5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+}
+
+.general_content .filtertasks .tasks__button .pendingtasks__button--fil:hover {
+    background-color: #f8d83b;
+    border: 1.7px solid #f8d83b;
+}
+
 .general_content .viewtasks {
     padding: 2rem 0 10rem 0;
     margin: 0 auto;
@@ -68,6 +111,10 @@ html {
 .general_content .viewtasks .viewtasks_table .viewtasks_head {
     text-transform:uppercase;
     font-size: 0.9rem;
+}
+
+.general_content .viewtasks .viewtasks_table .viewtasks_description--empty p {
+    margin: 0;
 }
 
 .general_content .viewtasks .viewtasks_table .viewtasks_delete {
@@ -84,20 +131,22 @@ html {
 
 /* Dispositivos pequeños (móviles en modo vertical, menos de 576px) */
 @media (max-width: 575.98px) {
+    .general_content {
+        max-width: 90%;
+        margin: 1rem auto;
+    }
     .general_content .infouser  {
         padding-top: 3rem;
     }
-    .general_content {
-        max-width: 90%;
-    }
+
 }
 
 /* Dispositivos medianos (tablets, de 576px a 991px) */
 @media (min-width: 576px) and (max-width: 991.98px) {
-    .general_content .infouser  {
-        padding-top: 5rem;
-    }
     .general_content {
         max-width: 70%;
+    }
+    .general_content .infouser  {
+        padding-top: 5rem;
     }
 }

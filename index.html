@@ -10,26 +10,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-
+    <!-- Estilos personificados -->
+    <link rel="stylesheet" href="./style.css">
     <title>Listar Tareas</title>
 </head>
 <body>
     <div class="container-fluid general_content">
         <div class="infouser">
             <h1 class="info__titulo">Listar Tareas</h1>
-            <p class="info__description">Aqui abajo indica las tareas que deseas agregar y oprime el boton de agregar para que se agreguen a la lista</p>
+            <p class="info__description">Aqui abajo indica las tareas que deseas y oprime el boton para que se agreguen a la lista</p>
         </div>
         <div class="addtasks row">
             <div class="addtasks__text col-6">
-                <input type="text" class="form-control" placeholder="Indique aqui la tarea que quieres agregar" aria-label="Indique aqui la tarea que quieres agregar">
+                <input id="agregartarea" type="text" class="form-control" placeholder="Indique aqui la tarea que quieres agregar" aria-label="Agregar tarea">
             </div>
             <div class="addtasks__button col-auto">
-                <button id="agregar" type="button" class="btn addtasks__button--add">Agregar</button>
+                <button id="btnagregar" type="button" class="btn addtasks__button--add">Agregar</button>
             </div>
         </div>
-
+        <div class="filtertasks">
+            <div class="tasks__button col-auto">
+                <button id="donetasks" type="button" class="btn donetasks__button--fil">Realizadas</button>
+            </div>
+            <div class="tasks__button col-auto">
+                <button id="pendingtasks" type="button" class="btn pendingtasks__button--fil">Pendientes</button>
+            </div>
+        </div>
         <div class="col-8 viewtasks">
             <table class="table viewtasks_table">
                 <thead>
@@ -39,27 +45,15 @@
                     <th scope="col" class="col-1"></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="listatareas">
                   <tr>
-                    <th scope="row" class="viewtasks_check">
-                        <input class="form-check-input viewtasks_check--task" type="checkbox" value="" id="taskscheck" data="done">
-                    </th>
-                    <td class="viewtasks_description">
-                        <p class="viewtasks_description--text">a</p>
-                    </td>
-                    <td class="viewtasks_delete">
-                        <button class="btn btn-danger viewtasks_delete--btn" data="isdeleted" id="deletetask">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
                   </tr>
                 </tbody>
             </table>
         </div>
-
-
-
     </div>
+    <script src="./app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
