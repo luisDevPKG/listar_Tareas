@@ -1,0 +1,103 @@
+/* aplicar un modelo de diseño de caja natural a todos los elementos, pero permitiendo que los componentes cambien */
+html {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+.general_content {
+    font-family: "Itim", cursive;
+    border: .2rem solid black;
+    border-radius: 2rem;
+    max-width: 50%;
+    margin: 5rem auto;
+}
+
+.general_content .infouser  {
+    text-align: center;
+    padding-top: 7rem;
+}
+
+.general_content .infouser .info__titulo {
+    margin: 0;
+    padding: 1rem 0 2rem 0;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.general_content .infouser .info__description {
+    margin: 0;
+    padding: 1rem 0 2rem 0;
+    font-size: 1.2rem;
+}
+
+.general_content .addtasks {
+    justify-content: center;
+}
+
+.general_content .addtasks .addtasks__text input::placeholder {
+    opacity: 0.4;
+}
+
+.general_content .addtasks .addtasks__button .addtasks__button--add {
+    background-color: dodgerblue;
+    border: 1.5px solid dodgerblue;
+    border-radius: .5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+}
+
+.general_content .addtasks .addtasks__button .addtasks__button--add:hover {
+    background-color:deepskyblue;
+    border: 1.7px solid deepskyblue;
+}
+
+.general_content .viewtasks {
+    padding: 2rem 0 10rem 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.general_content .viewtasks .viewtasks_table .viewtasks_head {
+    text-transform:uppercase;
+    font-size: 0.9rem;
+}
+
+.general_content .viewtasks .viewtasks_table .viewtasks_delete {
+    text-align: center;
+}
+
+.general_content .viewtasks .viewtasks_table .viewtasks_delete .viewtasks_delete--btn {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dispositivos pequeños (móviles en modo vertical, menos de 576px) */
+@media (max-width: 575.98px) {
+    .general_content .infouser  {
+        padding-top: 3rem;
+    }
+    .general_content {
+        max-width: 90%;
+    }
+}
+
+/* Dispositivos medianos (tablets, de 576px a 991px) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .general_content .infouser  {
+        padding-top: 5rem;
+    }
+    .general_content {
+        max-width: 70%;
+    }
+}
