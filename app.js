@@ -1,9 +1,6 @@
 
 import { Task } from './Task.js';
 
-// Array para almacenar las tareas
-let tasksList = [];
-
 // referencias de elementos DOM
 const inputTaks = document.getElementById('addTask');
 const addButton = document.getElementById('btnagregar');
@@ -12,6 +9,9 @@ const taskListDone = document.getElementById('donetasks');
 const taskListPending = document.getElementById('pendingtasks');
 const allTask = document.getElementById('alltasks');
 
+// Array para almacenar las tareas
+let tasksList = [];
+
 
 // Alertas
 function showAlerts(icon, title, text=""){
@@ -19,7 +19,7 @@ function showAlerts(icon, title, text=""){
 }
 
 // guardo tareas en el localstorage
-function saveCheckboxStatus(){
+function saveTaskToStorage(){
     localStorage.setItem("tasksList", JSON.stringify(tasksList));
 }
 
@@ -32,15 +32,15 @@ function addTask() {
         return; // detengo la ejecucion y no dejo que agregue
     } else {
         // agrego la tarea a la lista
-        const task = new Task(inputTaks.value);
+        const task = new Task(taskName);
         tasksList.push(task);
 
         // guardo tarea en el localstorage
-        saveCheckboxStatus();
+        saveTaskToStorage();
         // seteo el input despues de agregar
         inputTaks.value = "";
+        showTask(tasksList);
         showAlerts("success", "Tarea registrada correctamente")
-        showTask();
     }
 }
 
@@ -92,11 +92,12 @@ function showTask(taskToShow = tasksList) {
 
     // mantener estilos de las tareas completadas
     taskToShow.forEach((task) => {
-        let rowTask = document.getElementById(`task-row-${task.id}`);
-        let checkboxTask = document.getElementById(`taskscheck-${task.id}`);
+        const rowTask = document.getElementById(`task-row-${task.id}`);
+        const checkboxTask = document.getElementById(`taskscheck-${task.id}`);
+
+        checkboxTask.checked = true; // lo sigue marcando como completada
 
         if (task.status === true) {
-            checkboxTask.checked = true; // lo sigue marcando como completada
             rowTask.classList.add('table-success');
         }
     });
@@ -110,22 +111,21 @@ function eventsTaskControl() {
     // Marcar tarea completada
     document.querySelectorAll(".viewtasks_check--task").forEach(checkbox => {
 
-        let taskID = checkbox.dataset.id; // obtengo el indice de la tarea
-        let rowTask = document.getElementById(`task-row-${taskID}`);
+        const taskID = checkbox.dataset.id; // obtengo el indice de la tarea
+        const rowTask = document.getElementById(`task-row-${taskID}`);
 
         checkbox.addEventListener('change', function() {
             // actualizo el status de la tarea para cada item
             const task = tasksList.find(t => t.id === parseInt(taskID));
-            task.uptateStatusTask();
+            task.updateStatusTask();
 
             // actualizo el cambio en el localStorage
-            saveCheckboxStatus();
+            saveTaskToStorage();
 
             if (this.checked) {
                 // modifica el front
                 rowTask.classList.remove("table-warning");
                 rowTask.classList.add("table-success");
-
                 showAlerts("success", "Tarea marcada como completada")
 
             } else {
@@ -139,7 +139,8 @@ function eventsTaskControl() {
 
     // Eliminar tarea
     document.querySelectorAll(".viewtasks_delete--btn").forEach(deleteBtn => {
-        let btnDelete = deleteBtn.dataset.id; // obtengo el indice del boton eliminar
+        const btnDelete = deleteBtn.dataset.id; // obtengo el indice del boton eliminar
+
         deleteBtn.addEventListener('click', () => {
             Swal.fire({
                 title: "Deseas eliminar la tarea?",
@@ -168,12 +169,12 @@ function deleteTask(idTask){
     // cre un nuevo array con las tareas excepto la que se va a eliminar
     tasksList = tasksList.filter((task) => task.id !== parseInt(idTask));
     // actualizo el cambio en el localStorage
-    saveCheckboxStatus();
+    saveTaskToStorage();
     showTask();
 }
 
+// filtrar tareas
 function eventsFilterButtons(){
-     // filtrar tareas
     // Tareas completadas
     taskListDone.addEventListener('click', () => {
         const tasksDone = tasksList.filter(t => t.status === true);
@@ -193,8 +194,10 @@ function eventsFilterButtons(){
 // renderizo la pagina con la informacion del local storage
 document.addEventListener("DOMContentLoaded", () => {
     const tasksSaved = localStorage.getItem("tasksList");
+
     if (tasksSaved) {
         const recoverTasks = JSON.parse(tasksSaved);
+
         tasksList = recoverTasks;
         tasksList.map(t=> {
             const task = new Task(t.name);

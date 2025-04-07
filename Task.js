@@ -8,7 +8,7 @@ export class Task {
         this.status = false;
     }
 
-    uptateStatusTask () {
+    updateStatusTask () {
         this.status = !this.status; // marcar completada
     }
 }
