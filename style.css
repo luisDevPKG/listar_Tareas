@@ -18,7 +18,7 @@ html {
 
 .general_content .infouser  {
     text-align: center;
-    padding-top: 7rem;
+    padding-top: 5rem;
 }
 
 .general_content .infouser .info__titulo {
@@ -102,8 +102,24 @@ html {
     border: 1.7px solid #f8d83b;
 }
 
+.general_content .filtertasks .tasks__button .alltasks__button--fil {
+    background-color: #e55c3e;
+    border: 1.5px solid #e55c3e;
+    border-radius: .5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+}
+
+.general_content .filtertasks .tasks__button .alltasks__button--fil:hover {
+    background-color: #f97f65;
+    border: 1.7px solid #f97f65;
+}
+
 .general_content .viewtasks {
-    padding: 2rem 0 10rem 0;
+    padding: 2rem 0 5rem 0;
     margin: 0 auto;
     text-align: center;
 }
@@ -116,7 +132,6 @@ html {
 .general_content .viewtasks .viewtasks_table .viewtasks_description--empty p {
     margin: 0;
 }
-
 
 .general_content .viewtasks .viewtasks_table .viewtasks_delete {
     text-align: center;

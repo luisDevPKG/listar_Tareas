@@ -22,7 +22,7 @@
         </div>
         <div class="addtasks row">
             <div class="addtasks__text col-6">
-                <input id="agregartarea" type="text" class="form-control" placeholder="Indique aqui la tarea que quieres agregar" aria-label="Agregar tarea">
+                <input id="addTask" type="text" class="form-control" placeholder="Indique aqui la tarea que quieres agregar" aria-label="Agregar tarea">
             </div>
             <div class="addtasks__button col-auto">
                 <button id="btnagregar" type="button" class="btn addtasks__button--add">Agregar</button>
@@ -35,22 +35,25 @@
             <div class="tasks__button col-auto">
                 <button id="pendingtasks" type="button" class="btn pendingtasks__button--fil">Pendientes</button>
             </div>
+            <div class="tasks__button col-auto">
+                <button id="alltasks" type="button" class="btn alltasks__button--fil">Mostrar todas</button>
+            </div>
         </div>
         <div class="col-8 viewtasks">
             <table class="table viewtasks_table">
                 <thead>
                   <tr class="viewtasks_head">
-                    <th scope="col" class="col-2">Marcar como leido</th>
+                    <th scope="col" class="col-2">Marcar como completada</th>
                     <th scope="col" class="col-6">Asunto</th>
                     <th scope="col" class="col-1"></th>
                   </tr>
                 </thead>
-                <tbody id="listatareas">
+                <tbody id="tasksList">
                 </tbody>
             </table>
         </div>
     </div>
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
