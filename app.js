@@ -101,9 +101,8 @@ function showTask(taskToShow = tasksList) {
         }
     });
 
-    // se dispone de los events - chekbox y eliminar
+    // Control chekbox y eliminar
     eventsTaskControl();
-    // eventsTaskControl();
 }
 
 // control de events
